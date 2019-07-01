@@ -2,6 +2,8 @@ This is some R code for both creating the function for variance inflation factor
 
 Essentially, the function takes an object of class "lm" or linear model and computes the Rsquared for subsequent cross-covariate regressions - once for each covariate on all other covariates.
 
+Take note: if you have only two covariates, then the two resulting VIFs will be identical. Hence, this will only be useful to you if you suspect multicollinearity and have k>2 regressors.
+
 The reciprocal of 1-Rsquared is the VIF, computed once for each cross-covariate regression.
 
 A rule-of-thumb is to watch for any VIF>10 to call out that covariate as bringing about your multicollinearity.
