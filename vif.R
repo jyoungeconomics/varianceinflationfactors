@@ -6,9 +6,7 @@ VIF <- function(moo){
   V <- matrix(NA,ncol(model.matrix(moo))-1,1)
   for(i in 2:ncol(model.matrix(moo))){
     colnames(model.matrix(moo))[i] -> M
-    paste0(M,"~",
-           paste(colnames(model.matrix(moo))[-1][!grepl(M,colnames(model.matrix(moo))[-1])],
-                               collapse = "+")) -> f
+    paste0(M,"~",paste(colnames(model.matrix(moo))[-1][!grepl(M,colnames(model.matrix(moo))[-1])],collapse = "+")) -> f
     moo1 <- lm(f,moo$model)
     cor(moo1$model[,1],moo1$fitted.values)^2 -> R2
     1/(1-R2) -> V[i-1]
